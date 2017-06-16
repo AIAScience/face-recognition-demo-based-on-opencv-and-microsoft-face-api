@@ -11,6 +11,13 @@ import face_recognition_system.operations as op
 import cv2
 from cv2 import __version__
 
+from matplotlib.pyplot import imshow
+from matplotlib.pyplot import rcParams
+rcParams['figure.figsize'] = (12, 8)
+import operator
+
+
+
 def get_images(frame, faces_coord, shape):
     """ Perfrom transformation on original and face images.
 
@@ -56,21 +63,29 @@ def add_person(people_folder, shape):
         counter = 1
         timer = 0
         cv2.namedWindow('Video Feed', cv2.WINDOW_AUTOSIZE)
-        cv2.namedWindow('Saved Face', cv2.WINDOW_NORMAL)
+        #cv2.namedWindow('Saved Face', cv2.WINDOW_NORMAL)
+        mood_adj = "How do you look like?"
         while counter < 21:
             frame = video.get_frame()
             face_coord = detector.detect(frame)
             if len(face_coord):
+                cv2.putText(frame, mood_adj.capitalize(),
+                            (face_coord[0][0], face_coord[0][1]),
+                            cv2.FONT_HERSHEY_PLAIN, 1.7, (206, 0, 209), 2,
+                            cv2.LINE_AA)
+
                 frame, face_img = get_images(frame, face_coord, shape)
-                # save a face every second, we start from an offset '5' because
+                # save a face every second (100), we start from an offset '5' because
                 # the first frame of the camera gets very high intensity
                 # readings.
                 if timer % 100 == 5:
+                    
+                    (conf_adj, mood_adj) = analyze_face(frame) ### TEST
                     cv2.imwrite(folder + '/' + str(counter) + '.jpg',
                                 face_img[0])
                     print 'Images Saved:' + str(counter)
                     counter += 1
-                    cv2.imshow('Saved Face', face_img[0])
+                    #cv2.imshow('Saved Face', face_img[0])
 
             cv2.imshow('Video Feed', frame)
             cv2.waitKey(50)
@@ -78,6 +93,59 @@ def add_person(people_folder, shape):
     else:
         print "This name already exists."
         sys.exit()
+
+def analyze_face(img):
+    import requests
+    import PIL
+    import StringIO
+    f = StringIO.StringIO()
+    PIL.Image.fromarray(img).save(f, 'png')
+    data = f.getvalue()
+    print "OK"
+    from donthackme import API_KEY
+    endpoint = 'https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect'
+    args = {'returnFaceId': 'true',
+            'returnFaceLandmarks': 'false',
+            'returnFaceAttributes': 'age,gender,emotion,smile,glasses'}
+    headers = {'Content-Type': 'application/octet-stream',
+               'Ocp-Apim-Subscription-Key': API_KEY}
+    response = requests.post(data=data,url=endpoint,headers=headers,params=args)
+    for face in response.json():
+        print face
+        # sadness, neutral, contempt, disgust, anger, surprise, fear, happiness
+        infos = face['faceAttributes']
+        mood = infos['emotion']
+        age = infos['age']
+        gender = infos['gender']
+        glasses = infos['glasses']
+        smile = infos['smile']
+        if gender == 'male':
+            print "\nYet another boy!"
+        agish = int(round5(age))
+        print "You seem close to {agish}!!  Are you {age} years old maybe?!".format(agish=agish, age=age)
+
+        sorted_mood = sorted(mood.items(), key=operator.itemgetter(1))
+        mood, conf = sorted_mood[-1]
+        mood_adj = {'sadness':'sad', 'neutral':'ok', 'contempt':'contempt', 'disgust':'disgust',
+                    'anger':'angry', 'surprise':'surprised', 'fear':'afraid', 'happiness':'happy'}[mood]
+        if conf > 0.9:
+            conf_adj = 'very'
+        elif conf > 0.5:
+            conf_adj = 'quite'
+        elif conf > 0.3:
+            conf_adj = 'maybe'
+        elif conf > 0.1:
+            conf_adj = 'barely'
+        print "You look {conf_adj} {mood}".format(conf_adj=conf_adj, mood=mood_adj)
+        if glasses == "reading glasses":
+            print "Cool glasses by the way!"
+        if smile > 0.7:
+            print "Yeaaahhh! That's a BIG SMILE!"
+    return (conf_adj, mood_adj)
+
+        
+def round5(x, base=5):
+    return int(base * round(float(x)/base))
 
 def recognize_people(people_folder, shape):
     """ Start recognizing people in a live stream with your webcam
@@ -116,7 +184,7 @@ def recognize_people(people_folder, shape):
         threshold = 300
     elif choice == 3:
         recognizer = cv2.face.createLBPHFaceRecognizer()
-        threshold = 105
+        threshold = 65 #105
     images = []
     labels = []
     labels_people = {}
@@ -159,8 +227,8 @@ def recognize_people(people_folder, shape):
                                 cv2.FONT_HERSHEY_PLAIN, 1.7, (206, 0, 209), 2,
                                 cv2.LINE_AA)
 
-        cv2.putText(frame, "ESC to exit", (5, frame.shape[0] - 5),
-                    cv2.FONT_HERSHEY_PLAIN, 1.2, (206, 0, 209), 2, cv2.LINE_AA)
+        # cv2.putText(frame, "ESC to exit", (5, frame.shape[0] - 5),
+        #             cv2.FONT_HERSHEY_PLAIN, 1.2, (206, 0, 209), 2, cv2.LINE_AA)
         cv2.imshow('Video', frame)
         if cv2.waitKey(100) & 0xFF == 27:
             sys.exit()
@@ -202,3 +270,4 @@ if __name__ == '__main__':
         recognize_people(PEOPLE_FOLDER, SHAPE)
     elif CHOICE == 3:
         sys.exit()
+

@@ -26,7 +26,6 @@ class VideoCamera(object):
 
         if in_grayscale:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
         return frame
 
     def show_frame(self, seconds, in_grayscale=False):
