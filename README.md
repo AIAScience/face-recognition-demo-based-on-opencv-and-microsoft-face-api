@@ -8,7 +8,7 @@
 * ...
 
 
-This repository is an extenion to the great presentation made by Rodrigo Agundez at PyData 2016. **Thanks Rodriguo!!!**
+This repository is an extension to [the great presentation made by Rodrigo Agundez at PyData 2016](https://github.com/rragundez/PyData). **Thanks Rodriguo!!!**
 
 It extends the face recognition example with simple calls to the Microsft Face API whih returns an estimation of the age, of the gender and of the mood during the collection of faces. The advantage of showing your mood while collecting 20 images of someone's face is to encourage the participants to fake their mood, and as a result, provides a better diversity of the faces collected as training set. 
 
