@@ -2,11 +2,11 @@
 
 <table style="width:100%">
   <tr>
-    <th>![Alt Text](./images/Michael.gif)</th>
-    <th>![Alt Text](./images/Dirk.gif)</th>
-    <th>![Alt Text](./images/Patrick.gif)</th>
-    <th>![Alt Text](./images/OJ.gif)</th>
-    <th>![Alt Text](./images/Atle.gif)</th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Michael.gif?raw=true" alt="Michael"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Dirk.gif?raw=true" alt="Dirk"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Atle.gif?raw=true" alt="Atle"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Patrick.gif?raw=true" alt="Patrick"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/OJ.gif?raw=true" alt="Odd-Jostein"></th>  
   </tr>
 </table>
 
