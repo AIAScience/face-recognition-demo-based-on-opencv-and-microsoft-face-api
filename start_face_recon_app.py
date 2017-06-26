@@ -110,6 +110,8 @@ def analyze_face(img):
     headers = {'Content-Type': 'application/octet-stream',
                'Ocp-Apim-Subscription-Key': API_KEY}
     response = requests.post(data=data,url=endpoint,headers=headers,params=args)
+    conf_adj= ""
+    mood_adj = ""
     for face in response.json():
         print face
         # sadness, neutral, contempt, disgust, anger, surprise, fear, happiness
@@ -135,8 +137,10 @@ def analyze_face(img):
         elif conf > 0.3:
             conf_adj = 'maybe'
         elif conf > 0.1:
+            conf_adj = 'slightly'
+        else:
             conf_adj = 'barely'
-        print "You look {conf_adj} {mood}".format(conf_adj=conf_adj, mood=mood_adj)
+            print "You look {conf_adj} {mood}".format(conf_adj=conf_adj, mood=mood_adj)
         if glasses == "reading glasses":
             print "Cool glasses by the way!"
         if smile > 0.7:
@@ -184,7 +188,7 @@ def recognize_people(people_folder, shape):
         threshold = 300
     elif choice == 3:
         recognizer = cv2.face.createLBPHFaceRecognizer()
-        threshold = 65 #105
+        threshold = 85 #105
     images = []
     labels = []
     labels_people = {}
