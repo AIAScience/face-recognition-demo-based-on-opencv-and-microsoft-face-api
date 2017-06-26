@@ -1,56 +1,37 @@
-<img align="right" width="40%" src="http://pydata.org/amsterdam2016/static/images/pydata-logo-amsterdam-2016.png" alt="PyData Amsterdam Logo">
-# PyData Tutorial
+# Building a Face Recognition System with OpenCV in the blink of an Eye... Checking your mood with the Microsoft Face API
 
-This repository is created with the intention for people who will attend the PyData tutorial to have a look at the code prior to the tutorial. This OpenCV tutorial is based on version 3.0.0
+<table style="width:100%">
+  <tr>
+    <th>![Alt Text](./images/Michael.gif)</th>
+    <th>![Alt Text](./images/Dirk.gif)</th>
+    <th>![Alt Text](./images/Patrick.gif)</th>
+    <th>![Alt Text](./images/OJ.gif)</th>
+    <th>![Alt Text](./images/Atle.gif)</th>
+  </tr>
+</table>
 
-# Building a Face Recognition System with OpenCV in the blink of an Eye
 
-<img align="right" width="30%" src="http://www.qualogy.com/wp-content/themes/qua/images/q_logo.png" alt="Qualogy Logo">
+* Are you happy?    (◕‿◕✿)
+* Are you sad?      (ಥ﹏ಥ)
+* Are you afraid?    ⚆ _ ⚆
+* Are you surprised? ◉_◉
+* Are you angry?     (ง'̀-'́)ง
+* ...
 
-This notebook was created for the tutorial during the PyData Meeting:
-- Author: <font color='red'>Rodrigo Agundez from Qualogy Solutions</font>
-- Place: Amsterdam, Papaverweg 265
-- Date: Saturday, March 12, 2016
-- Time: 16:15
-- Room: 2
 
-The goal of this tutorial is to build a simple face recognition system with the use of the opencv library. This tutorial is separated in three parts:
-- Basic manipulation techniques of images and video using OpenCV.
-- Building our data set of images.
-- Training the classification model provided by OpenCV.
-- Recognize never seen images by the model.
-- Recognize faces from a live video feed.
-- Try to trick the face recognition to classify other types of objects.
+This repository is an extension to [the great presentation made by Rodrigo Agundez at PyData 2016](https://github.com/rragundez/PyData). **Thanks Rodriguo!!!**
 
-### A bit about OpenCV
-OpenCV is an open source computer vision and machine learning software library.
-The library includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to:
-<div style="float: left; width: 40%; margin-top: 16px; margin-bottom: 16px">
-<ul style="align: left; list-style-type:square">
-  <li>Detect Faces</li>
-  <li>Recognize Faces</li>
-  <li>Identify Objects</li>
-  <li>Classify human actions in videos</li>
-  <li>Track camera movement</li>
-  <li>Track moving objects</li>
-</ul>
-</div>
-<div style="float: right; width: 60%; margin-top: 16px; margin-bottom: 16px">
-<ul style="align: left; list-style-type:square">
-  <li>Extract 3D models of objects</li>
-  <li>Produce 3D point clouds from stereo cameras</li>
-  <li>Stitch images together to produce a high resolution image of an entire scene</li>
-  <li>Find similar images from an image database</li>
-  <li>Remove red eyes from images taken using flash</li>
-  <li>Follow eye movements</li>
-</ul>
-</div>
+It extends the face recognition example with simple calls to the Microsft Face API whih returns an estimation of the age, of the gender and of the mood during the collection of faces. The advantage of showing your mood while collecting 20 images of someone's face is to encourage the participants to fake their mood, and as a result, provides a better diversity of the faces collected as training set. 
 
-It has C++, C, Python, Java and MATLAB interfaces and supports Windows, Linux, Android and Mac OS. 
 
-### Requiered Packages for this tutorial
-<ul style="list-style-type:square">
-  <li>OpenCV (cv2)</li>
-  <li>Numpy</li>
-  <li>matplotlib</li>
-</ul>
+## Lets try it!!
+
+* you will need to update this file with a valid key from Microsoft. [Just get one here!](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)
+
+```shell
+$ cat donthackme.py
+API_KEY = '36fb2145d5ad432586376876703b9aa3'
+$ 
+```
+
+* then simply run: `python start_face_recon_app.py`
