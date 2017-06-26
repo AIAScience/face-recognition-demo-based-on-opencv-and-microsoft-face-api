@@ -2,11 +2,11 @@
 
 <table style="width:100%">
   <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-<th>Lastname</th> 
-    <th>Age</th>
+    <th>![Alt Text](./images/Michael.gif)</th>
+    <th>![Alt Text](./images/Dirk.gif)</th>
+    <th>![Alt Text](./images/Patrick.gif)</th>
+    <th>![Alt Text](./images/OJ.gif)</th>
+    <th>![Alt Text](./images/Atle.gif)</th>
   </tr>
 </table>
 
