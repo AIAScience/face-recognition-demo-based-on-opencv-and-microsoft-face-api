@@ -2,11 +2,11 @@
 
 <table style="width:100%">
   <tr>
-    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Michael.gif?raw=true" alt="Michael"></th>
-    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Dirk.gif?raw=true" alt="Dirk"></th>
-    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Atle.gif?raw=true" alt="Atle"></th>
-    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Patrick.gif?raw=true" alt="Patrick"></th>
-    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/OJ.gif?raw=true" alt="Odd-Jostein"></th>  
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Michael.gif?raw=true" alt="Michael" title="Michael"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Dirk.gif?raw=true" alt="Dirk" title="Dirk"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Atle.gif?raw=true" alt="Atle" title="Atle"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/Patrick.gif?raw=true" alt="Patrick" title="Patrick"></th>
+    <th><img src="https://github.com/AIAScience/face-recognition-demo-based-on-opencv-and-microsoft-face-api/blob/master/images/OJ.gif?raw=true" alt="Odd-Jostein" title="Odd-Jostein"></th>
   </tr>
 </table>
 
