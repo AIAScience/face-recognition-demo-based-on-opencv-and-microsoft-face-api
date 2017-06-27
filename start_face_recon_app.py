@@ -71,7 +71,7 @@ def add_person(people_folder, shape):
             if len(face_coord):
                 cv2.putText(frame, mood_adj.capitalize(),
                             (face_coord[0][0], face_coord[0][1]),
-                            cv2.FONT_HERSHEY_PLAIN, 1.7, (206, 0, 209), 2,
+                            cv2.FONT_HERSHEY_PLAIN, 1.7, (0, 3, 209), 2,
                             cv2.LINE_AA)
 
                 frame, face_img = get_images(frame, face_coord, shape)
@@ -80,7 +80,7 @@ def add_person(people_folder, shape):
                 # readings.
                 if timer % 100 == 5:
                     
-                    (conf_adj, mood_adj) = analyze_face(frame) ### TEST
+                    (conf_adj, mood_adj) = analyze_face(frame)
                     cv2.imwrite(folder + '/' + str(counter) + '.jpg',
                                 face_img[0])
                     print 'Images Saved:' + str(counter)
@@ -113,7 +113,7 @@ def analyze_face(img):
     conf_adj= ""
     mood_adj = ""
     for face in response.json():
-        print face
+        #print face
         # sadness, neutral, contempt, disgust, anger, surprise, fear, happiness
         infos = face['faceAttributes']
         mood = infos['emotion']
@@ -123,6 +123,8 @@ def analyze_face(img):
         smile = infos['smile']
         if gender == 'male':
             print "\nYet another boy!"
+        else:
+            print "\nFinally! a girl!!!!"
         agish = int(round5(age))
         print "You seem close to {agish}!!  Are you {age} years old maybe?!".format(agish=agish, age=age)
 
@@ -140,7 +142,7 @@ def analyze_face(img):
             conf_adj = 'slightly'
         else:
             conf_adj = 'barely'
-            print "You look {conf_adj} {mood}".format(conf_adj=conf_adj, mood=mood_adj)
+        print "You look {conf_adj} {mood}".format(conf_adj=conf_adj, mood=mood_adj)
         if glasses == "reading glasses":
             print "Cool glasses by the way!"
         if smile > 0.7:
@@ -223,12 +225,12 @@ def recognize_people(people_folder, shape):
                 if conf < threshold:
                     cv2.putText(frame, labels_people[pred].capitalize(),
                                 (faces_coord[i][0], faces_coord[i][1] - 2),
-                                cv2.FONT_HERSHEY_PLAIN, 1.7, (206, 0, 209), 2,
+                                cv2.FONT_HERSHEY_PLAIN, 1.7, (3, 209, 0), 2,
                                 cv2.LINE_AA)
                 else:
                     cv2.putText(frame, "Unknown",
                                 (faces_coord[i][0], faces_coord[i][1]),
-                                cv2.FONT_HERSHEY_PLAIN, 1.7, (206, 0, 209), 2,
+                                cv2.FONT_HERSHEY_PLAIN, 1.7, (209, 0, 3), 2,
                                 cv2.LINE_AA)
 
         # cv2.putText(frame, "ESC to exit", (5, frame.shape[0] - 5),

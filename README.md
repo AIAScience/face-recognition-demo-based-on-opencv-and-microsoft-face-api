@@ -16,7 +16,7 @@
 * Are you afraid?    ⚆ _ ⚆
 * Are you surprised? ◉_◉
 * Are you angry?     (ง'̀-'́)ง
-* ...
+* Are disgust, afraid, ...?
 
 
 This repository is an extension to [the great presentation made by Rodrigo Agundez at PyData 2016](https://github.com/rragundez/PyData). **Thanks Rodriguo!!!**
